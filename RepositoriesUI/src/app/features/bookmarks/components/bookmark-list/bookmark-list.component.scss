@@ -1,0 +1,42 @@
+$primary-color: #3f51b5; 
+$secondary-color: #5a72ff; 
+
+.mat-elevation-z8 {
+  margin: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+::ng-deep .mat-header-row {
+  background-color: $primary-color; 
+  color: white !important; 
+  font-weight: bold; 
+  font-size: 1.1rem; 
+  text-transform: uppercase;
+  font-weight: bold !important;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+
+.top-right-button {
+  background-color: $secondary-color; 
+  color: white; 
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none; 
+  transition: background-color 0.3s ease; 
+
+  &:hover {
+    background-color: $primary-color; 
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px $secondary-color; 
+  }
+}

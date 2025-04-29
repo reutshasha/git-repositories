@@ -1,0 +1,30 @@
+<div class="search-container mat-elevation-z4">
+    <mat-form-field class="full-width">
+        <mat-label>Search repositories</mat-label>
+        <input matInput [(ngModel)]="query" (keyup.enter)="search()" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="search()">Search</button>
+
+    <a routerLink="/bookmarks" disabled mat-raised-button class="top-right-button" color="accent">Go to Bookmarks</a>
+
+    <mat-card class="results-dropdown" *ngIf="results.length">
+        <mat-list>
+            <mat-list-item *ngFor="let repo of results">
+                <div class="list-item-content">
+                    <img matListAvatar [src]="repo.owner?.avatar_url" alt="Avatar">
+                    <div matLine>
+                        <strong>{{ repo.name }}</strong>
+                    </div>
+                    <button mat-button color="accent" (click)="addBookmark(repo)"
+                        [disabled]="isAddingBookmark[repo.id] || isBookmarkedState[repo.id]" class="bookmark-button">
+                        <mat-icon *ngIf="isBookmarkedState[repo.id]">bookmarked</mat-icon>
+                        <span *ngIf="!isBookmarkedState[repo.id]">Add to bookmarks</span>
+                    </button>
+                </div>
+            </mat-list-item>
+        </mat-list>
+    </mat-card>
+    <mat-paginator [length]="totalResults" [pageSize]="perPage" [pageSizeOptions]="[20]" (page)="onPageChange($event)">
+    </mat-paginator>
+
+</div>
